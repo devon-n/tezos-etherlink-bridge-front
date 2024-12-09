@@ -19,7 +19,7 @@ const init = () => {
 		name: config.app.name,
 		description: config.app.description,
 		network: {
-			type: NetworkType.CUSTOM,
+			type: NetworkType.GHOSTNET,
 			rpcUrl: config.tezos.network.rpcUrl,
 		},
 		featuredWallets: ["temple", "atomex", "metamask", "trust"],
