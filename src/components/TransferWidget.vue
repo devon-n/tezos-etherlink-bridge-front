@@ -130,6 +130,7 @@ onMounted(() => {
 const isLoading = ref(false)
 
 async function sendTransfer() {
+	return
 	isLoading.value = true
 
 	const _address = fromToken.value.address
@@ -184,8 +185,10 @@ const warningDisplayed = ref(true)
 			<Icon name="info" size="22" :class="$style.alert_icon" />
 			<Flex direction="column" gap="8" :class="$style.alert_message">
 				<Text size="15" weight="semibold">Attention!</Text>
-
-				<Text size="15" weight="500">You are on the <Text size="15" weight="semibold"> {{ capitalize(tezosNetworkName) }} </Text> test network.</Text>
+				Tezos Ghostnet is experiencing an incident. It is not possible to bridge XTZ to Etherlink Testnet until the situation is resolved.
+				<!-- <Text size="15" weight="500"> -->
+				<!-- You are on the <Text size="15" weight="semibold"> {{ capitalize(tezosNetworkName) }}  -->
+				<!-- </Text> test network.</Text> -->
 			</Flex>
 			<Icon @click="warningDisplayed = false" name="close" size="18" color="secondary" :class="$style.alert_close_icon" />
 		</Flex>
@@ -300,15 +303,17 @@ const warningDisplayed = ref(true)
 					</Flex>
 				</Flex>
 
-				<Flex v-else @click="sendTransfer" align="center" justify="center" :class="[$style.button, (!(bigIntAmount > 0n) || isLoading) && $style.disabled]">
-					<Flex v-if="isLoading" align="center" gap="6">
+				<Flex v-else @click="sendTransfer" align="center" justify="center" :class="[$style.button, $style.disabled]">
+				<!-- <Flex v-else @click="sendTransfer" align="center" justify="center" :class="[$style.button, (!(bigIntAmount > 0n) || isLoading) && $style.disabled]"> -->
+					<!-- <Flex v-if="isLoading" align="center" gap="6">
 						<Spinner size="14" />
 						<Text size="16" color="black">Waiting for transfer creation..</Text>
 					</Flex>
 
-					<Text v-else-if="bigIntAmount > 0n" size="16" color="black"> {{ fromChain.name === 'tezos' ? 'Deposit' : 'Withdraw' }}</Text>
+					<Text  v-else-if="bigIntAmount > 0n" size="16" color="black"> {{ fromChain.name === 'tezos' ? 'Deposit' : 'Withdraw' }}</Text>
 
-					<Text v-else size="16" color="black"> Enter amount to {{ fromChain.name === 'tezos' ? 'deposit' : 'withdraw' }} </Text>
+					<Text v-else size="16" color="black"> Enter amount to {{ fromChain.name === 'tezos' ? 'deposit' : 'withdraw' }} </Text> -->
+					<Text  size="16" color="black"> Transfers unable at this time</Text>
 				</Flex>
 			</Flex>
 		</Flex>
